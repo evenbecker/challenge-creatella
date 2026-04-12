@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { StyledEngineProvider } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 import {
   FormControl,
@@ -70,42 +71,38 @@ const Products = () => {
   };
 
   return (
-    <div onScroll={handleScroll} className={classes.root}>
-      <header>
-        <Typography variant="h1">Products Grid</Typography>
-        <Typography>
-          Here you're sure to find a bargain on some of the finest ascii
-          available to purchase. Be sure to peruse our selection of ascii faces
-          in an exciting range of sizes and prices.
-        </Typography>
-      </header>
-      <div className={classes.content}>
-        <FormControl className={classes.margin}>
-          <InputLabel htmlFor="select-label">Order By</InputLabel>
-          <NativeSelect
-            id="select-label"
-            value={sort}
-            onChange={({ target }) => {
-              setProducts([]);
-              setPage(0);
-              setFinished(false);
-              setSort(target.value);
-            }}
-          >
-            <option value=""></option>
-            <option value={"size"}>Size</option>
-            <option value={"price"}>Price</option>
-            <option value={"id"}>ID</option>
-          </NativeSelect>
-        </FormControl>
-        <Grid container spacing={3}>
-          {products.map((product, i) => (
-            <React.Fragment key={i}>
-              <Grid className={classes.card} item lg={3} md={4} sm={6} xs={12}>
-                <Product product={product} />
-              </Grid>
-              {/* After Every 20 Products Display an Advertisement */}
-              {(i + 1) % 20 === 0 && (
+    <StyledEngineProvider injectFirst>
+      <div onScroll={handleScroll} className={classes.root}>
+        <header>
+          <Typography variant="h1">Products Grid</Typography>
+          <Typography>
+            Here you're sure to find a bargain on some of the finest ascii
+            available to purchase. Be sure to peruse our selection of ascii
+            faces in an exciting range of sizes and prices.
+          </Typography>
+        </header>
+        <div className={classes.content}>
+          <FormControl className={classes.margin}>
+            <InputLabel htmlFor="select-label">Order By</InputLabel>
+            <NativeSelect
+              id="select-label"
+              value={sort}
+              onChange={({ target }) => {
+                setProducts([]);
+                setPage(0);
+                setFinished(false);
+                setSort(target.value);
+              }}
+            >
+              <option value=""></option>
+              <option value={"size"}>Size</option>
+              <option value={"price"}>Price</option>
+              <option value={"id"}>ID</option>
+            </NativeSelect>
+          </FormControl>
+          <Grid container spacing={3}>
+            {products.map((product, i) => (
+              <React.Fragment key={i}>
                 <Grid
                   className={classes.card}
                   item
@@ -114,20 +111,33 @@ const Products = () => {
                   sm={6}
                   xs={12}
                 >
-                  <Ad />
+                  <Product product={product} />
                 </Grid>
-              )}
-            </React.Fragment>
-          ))}
-        </Grid>
-        {finished && (
-          <Typography align="center" className={classes.end}>
-            ~ end of catalogue ~
-          </Typography>
-        )}
-        {loading && <Loading />}
+                {/* After Every 20 Products Display an Advertisement */}
+                {(i + 1) % 20 === 0 && (
+                  <Grid
+                    className={classes.card}
+                    item
+                    lg={3}
+                    md={4}
+                    sm={6}
+                    xs={12}
+                  >
+                    <Ad />
+                  </Grid>
+                )}
+              </React.Fragment>
+            ))}
+          </Grid>
+          {finished && (
+            <Typography align="center" className={classes.end}>
+              ~ end of catalogue ~
+            </Typography>
+          )}
+          {loading && <Loading />}
+        </div>
       </div>
-    </div>
+    </StyledEngineProvider>
   );
 };
 

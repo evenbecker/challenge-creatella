@@ -1,4 +1,5 @@
 import React from "react";
+import { StyledEngineProvider } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 import {
   Card,
@@ -50,25 +51,27 @@ const Ad = () => {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardContent className={classes.content}>
-        <Avatar
-          variant="square"
-          src={`/ads/?r=${random()}`}
-          className={classes.avatar}
-        />
-      </CardContent>
-      <Divider />
-      <CardActions className={classes.actions}>
-        <Grid container justify="space-between">
-          <Grid className={classes.statsItem} item>
-            <Typography display="inline" variant="body2">
-              Advertisement
-            </Typography>
+    <StyledEngineProvider injectFirst>
+      <Card className={classes.root}>
+        <CardContent className={classes.content}>
+          <Avatar
+            variant="square"
+            src={`/ads/?r=${random()}`}
+            className={classes.avatar}
+          />
+        </CardContent>
+        <Divider />
+        <CardActions className={classes.actions}>
+          <Grid container justify="space-between">
+            <Grid className={classes.statsItem} item>
+              <Typography display="inline" variant="body2">
+                Advertisement
+              </Typography>
+            </Grid>
           </Grid>
-        </Grid>
-      </CardActions>
-    </Card>
+        </CardActions>
+      </Card>
+    </StyledEngineProvider>
   );
 };
 

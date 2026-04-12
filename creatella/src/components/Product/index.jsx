@@ -1,4 +1,5 @@
 import React from "react";
+import { StyledEngineProvider } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 import {
   Card,
@@ -74,41 +75,43 @@ const Product = ({ product = {} }) => {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardContent className={classes.content}>
-        <Avatar
-          variant="square"
-          className={classes.avatar}
-          style={{ fontSize: product.size }}
-        >
-          {product.face}
-        </Avatar>
-        <Typography
-          align="center"
-          className={classes.ellipsis}
-          gutterBottom
-          variant="body1"
-        >
-          Size: {product.size} px
-        </Typography>
-      </CardContent>
-      <Divider />
-      <CardActions className={classes.actions}>
-        <Grid container justify="space-between">
-          <Grid className={classes.statsItem} item>
-            <AccessTimeIcon className={classes.statsIcon} />
-            <Typography display="inline" variant="body2">
-              {formatDate(product.date)}
-            </Typography>
+    <StyledEngineProvider injectFirst>
+      <Card className={classes.root}>
+        <CardContent className={classes.content}>
+          <Avatar
+            variant="square"
+            className={classes.avatar}
+            style={{ fontSize: product.size }}
+          >
+            {product.face}
+          </Avatar>
+          <Typography
+            align="center"
+            className={classes.ellipsis}
+            gutterBottom
+            variant="body1"
+          >
+            Size: {product.size} px
+          </Typography>
+        </CardContent>
+        <Divider />
+        <CardActions className={classes.actions}>
+          <Grid container justify="space-between">
+            <Grid className={classes.statsItem} item>
+              <AccessTimeIcon className={classes.statsIcon} />
+              <Typography display="inline" variant="body2">
+                {formatDate(product.date)}
+              </Typography>
+            </Grid>
+            <Grid className={classes.statsItem} item>
+              <Typography display="inline" variant="body2">
+                ${product.price / 100}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid className={classes.statsItem} item>
-            <Typography display="inline" variant="body2">
-              ${product.price / 100}
-            </Typography>
-          </Grid>
-        </Grid>
-      </CardActions>
-    </Card>
+        </CardActions>
+      </Card>
+    </StyledEngineProvider>
   );
 };
 
