@@ -29,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "90%",
     minHeight: "200px",
+    color: "#114326",
+    backgroundColor: "#d9f8e6",
   },
   ellipsis: {
     margin: 0,
