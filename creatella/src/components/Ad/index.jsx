@@ -62,7 +62,7 @@ const Ad = () => {
         </CardContent>
         <Divider />
         <CardActions className={classes.actions}>
-          <Grid container justify="space-between">
+          <Grid container justifyContent="space-between">
             <Grid className={classes.statsItem} item>
               <Typography display="inline" variant="body2">
                 Advertisement

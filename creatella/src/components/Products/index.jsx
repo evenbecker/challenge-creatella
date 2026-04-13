@@ -74,7 +74,7 @@ const Products = () => {
     <StyledEngineProvider injectFirst>
       <div onScroll={handleScroll} className={classes.root}>
         <header>
-          <Typography variant="h1">Products Grid</Typography>
+          <Typography variant="h1">Creatella Challenge</Typography>
           <Typography>
             Here you're sure to find a bargain on some of the finest ascii
             available to purchase. Be sure to peruse our selection of ascii
